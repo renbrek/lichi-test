@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { FieldType } from '@/enums';
 import { Input, InputProps } from '../Input';
 import { TextArea, TextAreaProps } from '../TextArea';
@@ -7,7 +7,7 @@ import { Button, ButtonProps } from '../Button';
 export type FormProps = {
   fields: FormField[]
   buttons?: ButtonProps[]
-};
+} & ComponentProps<'form'>;
 
 export type CommonFormFieldProps<S = string> = {
   value?: string | number,
@@ -28,9 +28,11 @@ export type TextAreaField = {
 export type FormField = TextInputField | TextAreaField;
 
 export function Form(props: FormProps): React.ReactNode {
-  const { fields, buttons } = props;
+  const {
+    fields, buttons, className, ...baseProps
+  } = props;
   return (
-    <form className="flex flex-col gap-2">
+    <form className={`flex flex-col gap-2 w-full ${className}`} {...baseProps}>
       {fields.map((field) => {
         switch (field.fieldType) {
           case FieldType.TextInput:
