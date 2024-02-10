@@ -1,1 +1,1 @@
-export * from './BaseFieldProps';
+export * from './baseFieldProps';

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import { Input, TextArea, Button } from '@/components';
+import { Input } from '@/components/Input';
+import { TextArea } from '@/components/TextArea';
+import { Button } from '@/components/Button';
+import { Form } from '@/components/Form';
+import { FieldType } from '@/enums';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const [login, setLogin] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+
   return (
     <main
       className={`flex gap-1 min-h-screen flex-col items-center p-16 ${inter.className}`}
@@ -14,6 +21,34 @@ export default function Home() {
       <TextArea label="Text" />
       <Button type="submit">Sign Up</Button>
       <Button variant="secondary" type="submit">Sign In</Button>
+      <Form
+        fields={[
+          {
+            fieldType: FieldType.TextInput,
+            fieldOptions: {
+              label: 'Login',
+            },
+            value: login,
+            setValue: setLogin,
+          },
+          {
+            fieldType: FieldType.TextInput,
+            fieldOptions: {
+              label: 'Password',
+              type: 'password',
+            },
+            value: password,
+            setValue: setPassword,
+          },
+        ]}
+        buttons={[
+          {
+            children: 'Sign Up',
+            isFullWidth: true,
+          },
+          { children: 'Cancel', isFullWidth: true, variant: 'secondary' },
+        ]}
+      />
     </main>
   );
 }
