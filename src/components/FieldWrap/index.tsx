@@ -13,8 +13,8 @@ export function FieldWrap(props: FieldWrapProps): React.ReactNode {
   } = props;
 
   return (
-    <div className="flex flex-col">
-      {label && <label htmlFor={fieldId} className="text-gray-400 font-semibold mb-1 text-sm">{label}</label>}
+    <div className="flex flex-col w-full">
+      {label && <label htmlFor={fieldId} className="text-gray-600 font-light mb-1 text-sm">{label}</label>}
       {children}
       {errorMessage && <span className="mt-1 text-red-500 text-xs">{errorMessage}</span>}
     </div>
