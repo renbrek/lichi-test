@@ -36,7 +36,7 @@ export function Form(props: FormProps): React.ReactNode {
     fields, buttons, className, ...baseProps
   } = props;
   return (
-    <form className={`flex flex-col gap-2 w-full ${className}`} {...baseProps}>
+    <form className={`flex flex-col gap-2 w-full items-center ${className}`} {...baseProps}>
       {fields.map((field, index) => {
         switch (field.fieldType) {
           case FieldType.TextInput:
