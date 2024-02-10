@@ -1,7 +1,6 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import { Input } from '@/components';
-import { TextArea } from '@/components/TextArea';
+import { Input, TextArea, Button } from '@/components';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,6 +12,8 @@ export default function Home() {
       hello
       <Input label="Best input" />
       <TextArea label="Text" />
+      <Button type="submit">Sign Up</Button>
+      <Button variant="secondary" type="submit">Sign In</Button>
     </main>
   );
 }

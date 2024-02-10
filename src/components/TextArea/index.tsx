@@ -1,14 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
+import { BaseFieldProps } from '@/types';
 import { FieldWrap } from '../FieldWrap';
 
-export type TextAreaProps = {
-  errorMessage?: string;
-  isError?: boolean;
-} & React.HTMLProps<HTMLTextAreaElement>;
+export type TextAreaProps = {} & BaseFieldProps & React.ComponentProps<'textarea'>;
 
 export function TextArea(props: TextAreaProps): React.ReactNode {
-  const { errorMessage, isError, ...baseProps } = props;
+  const {
+    errorMessage, isError, label, ...baseProps
+  } = props;
 
   const isHasError = errorMessage || isError;
 
@@ -16,7 +16,7 @@ export function TextArea(props: TextAreaProps): React.ReactNode {
   const textAreaId = baseProps.id ?? defaultTextAreaId;
 
   return (
-    <FieldWrap fieldId={textAreaId} label={baseProps.label}>
+    <FieldWrap fieldId={textAreaId} label={label}>
       <textarea
         className={clsx(
           'outline-none w-full rounded-none border border-gray-400 p-2 focus:border-black',
