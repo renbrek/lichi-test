@@ -1,3 +1,7 @@
+/* eslint-disable react/no-array-index-key */
+/* В данном случае не страшно использование индекса для ключа,
+так как элементы не будут менять свой порядок или удаляться. */
+
 import React, { ComponentProps } from 'react';
 import { FieldType } from '@/enums';
 import { Input, InputProps } from '../Input';
@@ -33,11 +37,12 @@ export function Form(props: FormProps): React.ReactNode {
   } = props;
   return (
     <form className={`flex flex-col gap-2 w-full ${className}`} {...baseProps}>
-      {fields.map((field) => {
+      {fields.map((field, index) => {
         switch (field.fieldType) {
           case FieldType.TextInput:
             return (
               <Input
+                key={index}
                 value={field.value}
                 onChange={(e) => field.setValue?.(e.currentTarget.value)}
                 {...field.fieldOptions}
@@ -46,16 +51,17 @@ export function Form(props: FormProps): React.ReactNode {
           case FieldType.TextArea:
             return (
               <TextArea
+                key={index}
                 value={field.value}
                 onChange={(e) => field.setValue?.(e.currentTarget.value)}
                 {...field.fieldOptions}
               />
             );
           default:
-            return <span>Field type does not implement</span>;
+            return <span key={index}>Field type does not implement</span>;
         }
       })}
-      {buttons && <>{buttons.map((button) => <Button {...button} />)}</>}
+      {buttons && <>{buttons.map((button, index) => <Button key={index} {...button} />)}</>}
     </form>
   );
 }
