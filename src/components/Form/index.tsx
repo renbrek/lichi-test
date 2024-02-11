@@ -2,7 +2,7 @@
 /* В данном случае не страшно использование индекса для ключа,
 так как элементы не будут менять свой порядок или удаляться. */
 
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { FieldType } from '@/enums';
 import { ValidationRules, getValidationErrors } from '@/utils';
 import { Input, InputProps } from '../Input';
@@ -12,7 +12,7 @@ import { Button, ButtonProps } from '../Button';
 export type FormProps = {
   fields: FormField[]
   buttons?: ButtonProps[]
-} & ComponentProps<'form'>;
+} & React.ComponentProps<'form'>;
 
 export type CommonFormFieldProps<TValue = string> = {
   value?: TValue
