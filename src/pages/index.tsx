@@ -30,12 +30,28 @@ export default function Home() {
             },
             value: login,
             setValue: setLogin,
+            validataion: {
+              isRequired: {
+                value: true,
+              },
+              maxLength: {
+                value: 50,
+              },
+            },
           },
           {
             fieldType: FieldType.TextInput,
             fieldOptions: {
               label: 'Password',
               type: 'password',
+            },
+            validataion: {
+              isRequired: {
+                value: true,
+              },
+              minLength: {
+                value: 8,
+              },
             },
             value: password,
             setValue: setPassword,

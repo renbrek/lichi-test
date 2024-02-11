@@ -7,16 +7,16 @@ export type InputProps = BaseFieldProps & React.ComponentProps<'input'>;
 
 export function Input(props: InputProps): React.ReactNode {
   const {
-    errorMessage, isError, label, className, ...baseProps
+    errorMessages, isError, label, className, ...baseProps
   } = props;
 
-  const isHasError = errorMessage || isError;
+  const isHasError = (!!errorMessages && errorMessages.length > 0) || isError;
 
   const defaultInputId = React.useId();
   const inputId = baseProps.id ?? defaultInputId;
 
   return (
-    <FieldWrap fieldId={inputId} label={label} errorMessage={errorMessage}>
+    <FieldWrap fieldId={inputId} label={label} errorMessages={errorMessages}>
       <input
         className={clsx(
           'outline-none w-full rounded-none border border-gray-400 p-2 focus:border-black',

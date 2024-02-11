@@ -1,5 +1,5 @@
 export type BaseFieldProps = {
-  errorMessage?: string;
+  errorMessages?: string[];
   isError?: boolean;
   label?: string;
 };

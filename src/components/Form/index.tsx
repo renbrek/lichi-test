@@ -4,6 +4,7 @@
 
 import React, { ComponentProps } from 'react';
 import { FieldType } from '@/enums';
+import { ValidationRules, getValidationErrors } from '@/utils';
 import { Input, InputProps } from '../Input';
 import { TextArea, TextAreaProps } from '../TextArea';
 import { Button, ButtonProps } from '../Button';
@@ -13,10 +14,11 @@ export type FormProps = {
   buttons?: ButtonProps[]
 } & ComponentProps<'form'>;
 
-export type CommonFormFieldProps<S = string> = {
-  value?: string | number,
-  setValue?: (action: S | ((prevState: S) => S)) => void;
-  validataion?: any
+export type CommonFormFieldProps<TValue = string> = {
+  value?: TValue
+  defaultValue?: TValue,
+  setValue?: (action: TValue | ((prevState: TValue) => TValue)) => void
+  validataion?: ValidationRules
 };
 
 export type TextInputField = {
@@ -35,24 +37,31 @@ export function Form(props: FormProps): React.ReactNode {
   const {
     fields, buttons, className, ...baseProps
   } = props;
+
   return (
     <form className={`flex flex-col gap-2 w-full items-center ${className}`} {...baseProps}>
       {fields.map((field, index) => {
+        const errors = (field.validataion)
+          ? getValidationErrors(field.value, field.validataion)
+          : undefined;
         switch (field.fieldType) {
-          case FieldType.TextInput:
+          case FieldType.TextInput: {
             return (
               <Input
                 key={index}
                 value={field.value}
+                errorMessages={errors}
                 onChange={(e) => field.setValue?.(e.currentTarget.value)}
                 {...field.fieldOptions}
               />
             );
+          }
           case FieldType.TextArea:
             return (
               <TextArea
                 key={index}
                 value={field.value}
+                errorMessages={errors}
                 onChange={(e) => field.setValue?.(e.currentTarget.value)}
                 {...field.fieldOptions}
               />

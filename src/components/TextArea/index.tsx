@@ -7,16 +7,16 @@ export type TextAreaProps = BaseFieldProps & React.ComponentProps<'textarea'>;
 
 export function TextArea(props: TextAreaProps): React.ReactNode {
   const {
-    errorMessage, isError, label, className, ...baseProps
+    errorMessages, isError, label, className, ...baseProps
   } = props;
 
-  const isHasError = errorMessage || isError;
+  const isHasError = (!!errorMessages && errorMessages.length > 0) || isError;
 
   const defaultTextAreaId = React.useId();
   const textAreaId = baseProps.id ?? defaultTextAreaId;
 
   return (
-    <FieldWrap fieldId={textAreaId} label={label}>
+    <FieldWrap fieldId={textAreaId} label={label} errorMessages={errorMessages}>
       <textarea
         className={clsx(
           'outline-none w-full rounded-none border border-gray-400 p-2 focus:border-black',
