@@ -27,7 +27,7 @@ export function Modal(props: ModalProps): React.ReactNode {
     <Portal>
       <div
         onClick={(isCloseOnClickOutside) ? onClose : undefined}
-        className={clsx('fixed inset-0 flex justify-center items-center transition-colors', isOpen ? 'visible bg-black/20' : 'invisible', className)}
+        className={clsx('fixed inset-0 flex justify-center items-center transition-colors', isOpen ? 'visible bg-black/20' : 'invisible')}
         {...baseProps}
       >
         <div
@@ -35,6 +35,7 @@ export function Modal(props: ModalProps): React.ReactNode {
           className={clsx(
             'bg-white shadow p-6 transition-all w-full max-w-[720px]',
             isOpen ? 'scale-100 opacity-100' : 'scale-125 opacity-0',
+            className,
           )}
         >
           {withCloseButton && (

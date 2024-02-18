@@ -11,6 +11,7 @@ export type Article = {
 
 export type ArticleComment = {
   id: string
+  articleId: string
   text: string
 };
 
@@ -21,7 +22,9 @@ export type ArticlesState = {
 export type ArticlesActions = {
   addArticle: (articleData: Omit<Article, 'id' | 'comments'>) => void
   removeArticle: (articleId: string) => void
-  addComment: (commentData: { articleId: string } & Omit<ArticleComment, 'id'>) => void
+  addComment: (commentData: {
+    articleId: string
+  } & Omit<ArticleComment, 'id'>) => void
   editComment: (commentData: { articleId: string } & ArticleComment) => void
   removeComment: (articleId: string, commentId: string) => void
 };
@@ -62,9 +65,33 @@ ArticlesState & ArticlesActions
       },
       removeArticle: () => {
       },
-      addComment: () => {
+      addComment: (commentData) => {
+        const id = crypto.randomUUID();
+        const newComment: ArticleComment = {
+          id,
+          articleId: commentData.articleId,
+          text: commentData.text,
+        };
+
+        set((data) => ({
+          ...data,
+          articles: data.articles.map((article) => (article.id === commentData.articleId ? {
+            ...article,
+            comments: [...article.comments, newComment],
+          } : article)),
+        }));
       },
-      editComment: () => {
+      editComment: (commentData) => {
+        set((data) => ({
+          ...data,
+          articles: data.articles.map((article) => (article.id === commentData.articleId ? {
+            ...article,
+            comments: article.comments.map((comment) => (comment.id === commentData.id ? {
+              ...comment,
+              text: commentData.text,
+            } : comment)),
+          } : article)),
+        }));
       },
       removeComment: () => {
       },
