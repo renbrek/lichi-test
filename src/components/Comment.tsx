@@ -29,7 +29,7 @@ export function Comment(props: CommentProps): React.ReactNode {
     >
       <Input
         value={commentText}
-        onChange={(e) => setCommentText(e.currentTarget.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCommentText(e.currentTarget.value)}
       />
       <Button variant="secondary" className="min-w-fit" onClick={handleSave}>Save</Button>
     </div>
