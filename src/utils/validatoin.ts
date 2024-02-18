@@ -1,4 +1,4 @@
-import { CommonFormFieldProps } from '@/components/Form';
+import { CommonFormFieldProps } from '../components/ui/Form';
 
 export type ValidationRules = {
   maxLength?: ValidationRule<number>

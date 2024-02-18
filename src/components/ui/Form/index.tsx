@@ -18,7 +18,7 @@ export type CommonFormFieldProps<TValue = string> = {
   value?: TValue
   defaultValue?: TValue,
   setValue?: (action: TValue | ((prevState: TValue) => TValue)) => void
-  validataion?: ValidationRules
+  validation?: ValidationRules
 };
 
 export type TextInputField = {
@@ -35,14 +35,17 @@ export type FormField = TextInputField | TextAreaField;
 
 export function Form(props: FormProps): React.ReactNode {
   const {
-    fields, buttons, className, ...baseProps
+    fields,
+    buttons,
+    className,
+    ...baseProps
   } = props;
 
   return (
     <form className={`flex flex-col gap-2 w-full items-center ${className}`} {...baseProps}>
       {fields.map((field, index) => {
-        const errors = (field.validataion)
-          ? getValidationErrors(field.value, field.validataion)
+        const errors = (field.validation)
+          ? getValidationErrors(field.value, field.validation)
           : undefined;
         switch (field.fieldType) {
           case FieldType.TextInput: {

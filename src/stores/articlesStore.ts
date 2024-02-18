@@ -51,7 +51,14 @@ ArticlesState & ArticlesActions
   persist(devtools(
     (set, get) => ({
       ...initialState,
-      addArticle: () => {
+      addArticle: (newArticleData) => {
+        const id = crypto.randomUUID();
+        const newArticle: Article = {
+          ...newArticleData,
+          comments: [],
+          id,
+        };
+        set((data) => ({ articles: [...data.articles, newArticle] }));
       },
       removeArticle: () => {
       },

@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { X } from 'react-feather';
-import { Portal } from '@/components/Portal';
+import { Portal } from '@/components/ui/Portal';
 
 export type ModalProps = {
   isOpen: boolean
@@ -33,7 +33,7 @@ export function Modal(props: ModalProps): React.ReactNode {
         <div
           onClick={(e) => e.stopPropagation()}
           className={clsx(
-            'bg-white  shadow p-6 transition-all',
+            'bg-white shadow p-6 transition-all w-full max-w-[720px]',
             isOpen ? 'scale-100 opacity-100' : 'scale-125 opacity-0',
           )}
         >
@@ -45,7 +45,9 @@ export function Modal(props: ModalProps): React.ReactNode {
               <X />
             </button>
           )}
-          {children}
+          <div className="max-h-[80vh] overflow-auto">
+            {children}
+          </div>
         </div>
       </div>
     </Portal>

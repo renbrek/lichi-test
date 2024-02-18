@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 
 export type PortalProps = {
@@ -8,10 +8,10 @@ export type PortalProps = {
 export function Portal(props: PortalProps) {
   const { children } = props;
 
-  const ref = useRef<Element | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const ref = React.useRef<Element | null>(null);
+  const [mounted, setMounted] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     ref.current = document.querySelector<HTMLElement>('#portal');
     setMounted(true);
   }, []);
