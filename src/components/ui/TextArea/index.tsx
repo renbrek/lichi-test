@@ -15,7 +15,6 @@ export function TextArea(props: TextAreaProps): React.ReactNode {
   } = props;
 
   const isHasError = (!!errorMessages && errorMessages.length > 0) || isError;
-
   const defaultTextAreaId = React.useId();
   const textAreaId = baseProps.id ?? defaultTextAreaId;
 
