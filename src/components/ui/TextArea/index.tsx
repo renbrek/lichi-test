@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BaseFieldProps } from '@/types';
+import { BaseFieldProps } from '@/types/baseFieldProps';
 import { FieldWrap } from '../FieldWrap';
 
 export type TextAreaProps = BaseFieldProps & React.ComponentProps<'textarea'>;

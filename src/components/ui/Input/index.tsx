@@ -1,13 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BaseFieldProps } from '@/types';
+import { BaseFieldProps } from '@/types/baseFieldProps';
 import { FieldWrap } from '../FieldWrap';
 
 export type InputProps = BaseFieldProps & React.ComponentProps<'input'>;
 
 export function Input(props: InputProps): React.ReactNode {
   const {
-    errorMessages, isError, label, className, ...baseProps
+    errorMessages,
+    isError,
+    label,
+    className,
+    ...baseProps
   } = props;
 
   const isHasError = (!!errorMessages && errorMessages.length > 0) || isError;
