@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BaseFieldProps } from '@/types/baseFieldProps';
+import { BaseFieldProps } from '@/types/BaseFieldProps';
 import { FieldWrap } from '../FieldWrap';
 
 export type InputProps = BaseFieldProps & React.ComponentProps<'input'>;

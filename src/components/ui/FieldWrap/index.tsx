@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseFieldProps } from '@/types/baseFieldProps';
+import { BaseFieldProps } from '@/types/BaseFieldProps';
 
 export type FieldWrapProps = {
   children: React.ReactNode;
