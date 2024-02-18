@@ -26,7 +26,8 @@ export function ArticleFeed(props: ArticleFeedProps): React.ReactNode {
   return (
     <>
       <div className="h-full flex flex-col gap-4">
-        {articles.toReversed()
+        {articles.slice()
+          .reverse()
           .map((article) => (
             <Card
               onClick={() => router.push(`/?articleId=${article.id}`, undefined, { shallow: true })}
