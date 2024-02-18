@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { X } from 'react-feather';
 import { Portal } from '@/components/ui/Portal';
+import { motion } from 'framer-motion';
 
 export type ModalProps = {
   isOpen: boolean
@@ -30,10 +31,23 @@ export function Modal(props: ModalProps): React.ReactNode {
         className={clsx('fixed inset-0 flex justify-center items-center transition-colors', isOpen ? 'visible bg-black/20' : 'invisible')}
         {...baseProps}
       >
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.75,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            transition: {
+              ease: 'easeOut',
+              duration: 0.2,
+            },
+          }}
+          style={{ position: 'relative' }}
           onClick={(e) => e.stopPropagation()}
           className={clsx(
-            'bg-white shadow p-6 transition-all w-full max-w-[720px]',
+            'relative bg-white shadow p-6 transition-all w-full max-w-[720px]',
             isOpen ? 'scale-100 opacity-100' : 'scale-125 opacity-0',
             className,
           )}
@@ -49,7 +63,7 @@ export function Modal(props: ModalProps): React.ReactNode {
           <div className="max-h-[80vh] overflow-auto">
             {children}
           </div>
-        </div>
+        </motion.div>
       </div>
     </Portal>
   );
