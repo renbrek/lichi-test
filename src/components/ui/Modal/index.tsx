@@ -12,7 +12,7 @@ export type ModalProps = {
    */
   withCloseButton?: boolean
   isCloseOnClickOutside?: boolean
-} & React.ComponentProps<'dialog'>;
+} & React.ComponentProps<'div'>;
 
 export function Modal(props: ModalProps): React.ReactNode {
   const {

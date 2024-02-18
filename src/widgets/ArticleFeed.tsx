@@ -15,7 +15,7 @@ export function ArticleFeed(props: ArticleFeedProps): React.ReactNode {
   const [openedArticleId, setOpenedArticleId] = useState<string>();
 
   const openedArticle = useMemo(() => {
-    if (!openedArticleId) return;
+    if (!openedArticleId) return undefined;
     return articles.find((article) => article.id === openedArticleId);
   }, [openedArticleId, articles]);
 

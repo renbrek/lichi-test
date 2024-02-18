@@ -35,6 +35,7 @@ export function CreateArticleForm(props: CreateArticleFormProps): React.ReactNod
     });
     resetFormState();
     onSuccess?.();
+    onError?.();
   };
 
   return (

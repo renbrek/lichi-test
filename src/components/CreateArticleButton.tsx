@@ -21,3 +21,5 @@ export function CreateArticleButton(): React.ReactNode {
     </>
   );
 }
+
+export default CreateArticleButton;

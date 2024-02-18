@@ -42,7 +42,7 @@ export function Card(props: CardProps): React.ReactNode {
           )}
       </div>
       {coverImageSrc && (
-        <img src={coverImageSrc} />
+        <img alt="coverImage" src={coverImageSrc} />
       )}
     </article>
   );

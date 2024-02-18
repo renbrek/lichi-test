@@ -19,7 +19,7 @@ export function ArticleView(props: ArticleViewProps): React.ReactNode {
   return (
     <div className={clsx('flex flex-col gap-5 ', merriweather.className)}>
       <h1 className="text-3xl font-bold p-6">{article.title}</h1>
-      {article.coverImage && <img src={article.coverImage} />}
+      {article.coverImage && <img alt="coverImage" src={article.coverImage} />}
       <h1 className="p-6">{article.body}</h1>
       <div className="p-6">
         <Comments articleId={article.id} comments={article.comments} />

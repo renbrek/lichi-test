@@ -1,5 +1,3 @@
-import { CommonFormFieldProps } from '../components/ui/Form';
-
 export type ValidationRules = {
   maxLength?: ValidationRule<number>
   minLength?: ValidationRule<number>
@@ -11,7 +9,7 @@ export type ValidationRule<TValue> = {
   errorMessage?: string
 };
 
-export function getValidationErrors(value: CommonFormFieldProps['value'], validationRules: ValidationRules): string[] {
+export function getValidationErrors(value: string | undefined, validationRules: ValidationRules) {
   const errors: string[] = [];
 
   if (validationRules.isRequired && !value) {

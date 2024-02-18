@@ -12,7 +12,6 @@ export type ButtonProps = {
 export function Button(props: ButtonProps): React.ReactNode {
   const {
     // github issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3284#issuecomment-1802145045
-    // eslint-disable-next-line react/prop-types
     children,
     variant = 'primary',
     isFullWidth,

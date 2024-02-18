@@ -52,7 +52,7 @@ export const useArticlesStore = create<
 ArticlesState & ArticlesActions
 >()(
   persist(devtools(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
       addArticle: (newArticleData) => {
         const id = crypto.randomUUID();
